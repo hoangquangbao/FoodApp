@@ -13,6 +13,9 @@
 		068BDCCF26D2A84A003DE847 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 068BDCCE26D2A84A003DE847 /* Preview Assets.xcassets */; };
 		068BDCDA26D2A84A003DE847 /* FoodAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068BDCD926D2A84A003DE847 /* FoodAppTests.swift */; };
 		068BDCE526D2A84A003DE847 /* FoodAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068BDCE426D2A84A003DE847 /* FoodAppUITests.swift */; };
+		06A46DCB26D329E200167407 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A46DCA26D329E200167407 /* HomeViewModel.swift */; };
+		06A46DCD26D329F000167407 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A46DCC26D329F000167407 /* Home.swift */; };
+		06D5354A26D4A20200CB5F0C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D5354926D4A20200CB5F0C /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		068BDCE026D2A84A003DE847 /* FoodAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		068BDCE426D2A84A003DE847 /* FoodAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAppUITests.swift; sourceTree = "<group>"; };
 		068BDCE626D2A84A003DE847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06A46DCA26D329E200167407 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		06A46DCC26D329F000167407 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		06D5354926D4A20200CB5F0C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0634FCBB26D2B38700017D28 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06A46DCC26D329F000167407 /* Home.swift */,
+				06D5354926D4A20200CB5F0C /* Menu.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		068BDCBB26D2A848003DE847 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +110,9 @@
 		068BDCC626D2A848003DE847 /* FoodApp */ = {
 			isa = PBXGroup;
 			children = (
+				06A46DC926D3299800167407 /* ViewModel */,
+				06A46DC826D3299100167407 /* Model */,
+				0634FCBB26D2B38700017D28 /* View */,
 				068BDCC726D2A848003DE847 /* FoodAppApp.swift */,
 				068BDCC926D2A848003DE847 /* ContentView.swift */,
 				068BDCCB26D2A84A003DE847 /* Assets.xcassets */,
@@ -128,6 +146,21 @@
 				068BDCE626D2A84A003DE847 /* Info.plist */,
 			);
 			path = FoodAppUITests;
+			sourceTree = "<group>";
+		};
+		06A46DC826D3299100167407 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06A46DC926D3299800167407 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				06A46DCA26D329E200167407 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +293,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				068BDCCA26D2A848003DE847 /* ContentView.swift in Sources */,
+				06A46DCB26D329E200167407 /* HomeViewModel.swift in Sources */,
+				06A46DCD26D329F000167407 /* Home.swift in Sources */,
 				068BDCC826D2A848003DE847 /* FoodAppApp.swift in Sources */,
+				06D5354A26D4A20200CB5F0C /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +457,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FoodApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 84ZVHZY7F4;
 				ENABLE_PREVIEWS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = FoodApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -443,6 +480,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FoodApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 84ZVHZY7F4;
 				ENABLE_PREVIEWS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = FoodApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
