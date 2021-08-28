@@ -41,8 +41,6 @@ struct Home: View {
                         .fontWeight(.heavy)
                         .foregroundColor(.purple)
                     
-                    
-                    
                     Spacer(minLength: 0)
                 }
                 .padding([.horizontal,.top])
@@ -51,7 +49,7 @@ struct Home: View {
                 
                 //HStack(spacing: 15){
                 //Add
-                HStack(spacing: 35){
+                HStack(spacing: 25){
                     
                     TextField("Search", text: $HomeModel.search)
                     
@@ -72,13 +70,26 @@ struct Home: View {
                 
                 Divider()
                 
-                Spacer()
+                ScrollView(.vertical, showsIndicators: false, content: {
+                    
+                    VStack(spacing: 25){
+                        
+                        ForEach(HomeModel.items){item in
+                            
+                            //Item View....
+                            
+                            ItemView(item: item)
+                                //.frame(width: UIScreen.main.bounds.width - 30)
+                        }
+                    }
+                })
+                    .padding()
             }
             
             //Side Menu.....
             
             HStack {
-                
+
                 Menu(HomeData: HomeModel)
                 //Hiệu ứng di chuyển từ bên trái
                 //Move effect from left....
