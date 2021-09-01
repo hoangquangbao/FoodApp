@@ -78,12 +78,44 @@ struct Home: View {
                             
                             //Item View....
                             
-                            ItemView(item: item)
-                                //.frame(width: UIScreen.main.bounds.width - 30)
+                            //ZStack(alignment: Alignment(horizontal: .center, vertical: .center), content: {
+                            ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
+                                
+                                ItemView(item: item)
+                                    
+                                HStack{
+                                 
+                                    Text("FREE DELIVERY")
+                                        //.font(.title2)
+                                        .fontWeight(.bold)
+                                    
+                                        .foregroundColor(.red)
+                                        .background(Color("pink"))
+                                        //.padding(.vertical,10)
+                                        //.padding(.horizontal)
+                                        
+                                    
+                                    Spacer(minLength: 0)
+                                    
+                                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                                         Image(systemName: "plus")
+                                            //.padding(10)
+                                            //.font(.title2)
+                                            .foregroundColor(.white)
+                                            .background(Color("pink"))
+                                            .clipShape(Circle())
+                                     }
+                                }
+                                //.padding(.trailing,10)
+                                //.padding(.top,10)
+                                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 20))
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 30)
                         }
                     }
+                    //.padding(.vertical)
+                    //.padding()
                 })
-                    .padding()
             }
             
             //Side Menu.....

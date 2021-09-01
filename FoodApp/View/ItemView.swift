@@ -19,17 +19,23 @@ struct ItemView: View {
             
             WebImage(url: URL(string: item.item_image))
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 250)
+                .aspectRatio(contentMode: .fill)
+                .cornerRadius(5)
+                //.frame(width: UIScreen.main.bounds.width - 30, height: 250)
+                //.clipShape(Circle())
+                //.frame(height: 250)
+                //.frame(width: .infinity, height: 250, alignment: .center)
                 //.frame(maxwidth: infini, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 //.frame(width: 250)
+            
+            //Spacer(minLength: 0)
             
             HStack(spacing: 8){
                 
                 Text(item.item_name)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.black)
-                    .font(.title2)
                 
                 Spacer(minLength: 0)
                 
@@ -41,6 +47,8 @@ struct ItemView: View {
                         .foregroundColor(index <= Int(item.item_raitings) ?? 0 ? .pink : .gray)
                 }
             }
+            //
+            .padding(EdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 3))
             
             HStack{
                 
@@ -51,6 +59,8 @@ struct ItemView: View {
                 
                 Spacer(minLength: 0)
             }
+            //
+            .padding(EdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 3))
         }
     }
 }
