@@ -49,20 +49,13 @@ struct Home: View {
                 
                 //HStack(spacing: 15){
                 //Add
-                HStack(spacing: 25){
+                HStack(spacing: 15){
+                    
+                    Image(systemName: "magnifyingglass")
+                    .font(.title2)
+                    .foregroundColor(.gray)
                     
                     TextField("Search", text: $HomeModel.search)
-                    
-                    if HomeModel.search != ""{
-                        
-                        Button(action: {}, label: {
-                            
-                            Image(systemName: "magnifyingglass")
-                            .font(.title2)
-                            .foregroundColor(.gray)
-                        })
-                        .animation(.easeIn)
-                    }
                 }
                 //.padding(.leading,20)
                 .padding(.horizontal)
@@ -74,7 +67,8 @@ struct Home: View {
                     
                     VStack(spacing: 25){
                         
-                        ForEach(HomeModel.items){item in
+                        //ForEach(HomeModel.items){item in
+                        ForEach(HomeModel.filtered){item in
                             
                             //Item View....
                             
@@ -110,7 +104,7 @@ struct Home: View {
                                 //.padding(.top,10)
                                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 20))
                             })
-                            .frame(width: UIScreen.main.bounds.width - 30)
+                            .frame(width: UIScreen.main.bounds.width - 5)
                         }
                     }
                     //.padding(.vertical)
@@ -142,12 +136,49 @@ struct Home: View {
             
         }
         
-        //Thêm 1 hành động để thực thi khi view này hiện ra
+        //Hành động này ko có tác dụng nếu nhận được giá trị nil
         .onAppear(perform: {
 
             // Calling location delegate...
             HomeModel.locationManager.delegate = HomeModel
         })
+        
+        .onChange(of: HomeModel.search, perform: { newValue in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                
+                if newValue == HomeModel.search && HomeModel.search != ""{
+                    
+                    //Search Data
+                    HomeModel.filterData()
+                }
+                    
+            }
+            
+            if HomeModel.search == ""{
+                //Reset all data....
+                withAnimation(.linear){HomeModel.filtered = HomeModel.items}
+            }
+        })
+        
+//        .onChange(of: HomeModel.search) { newValue in
+//
+//            //to avoid continue search request....
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//
+//                if newValue == HomeModel.search && HomeModel.search != ""{
+//
+//                    //Search Data
+//                    HomeModel.filterData()
+//                }
+//
+//            }
+//
+//            if HomeModel.search == ""{
+//                //Reset all data....
+//                withAnimation(.linear){HomeModel.filtered = HomeModel.items}
+//            }
+//        }
     }
 }
 

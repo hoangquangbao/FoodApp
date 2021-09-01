@@ -24,6 +24,7 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     
     //ItemData....
     @Published var items : [Items] = []
+    @Published var filtered : [Items] = []
     
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -119,6 +120,20 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
                 
                 return Items(id: id, item_name: name, item_cost: cost, item_details: details, item_image: image, item_raitings: raitings)
             })
+            
+            self.filtered = self.items
+        }
+    }
+    
+    //Search or Filter..
+    func filterData() {
+        
+        withAnimation(.linear){
+            
+            self.filtered = self.items.filter({
+                return $0.item_name.lowercased().contains(self.search.lowercased())
+            })
+
         }
     }
     
