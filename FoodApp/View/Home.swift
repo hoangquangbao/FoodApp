@@ -15,7 +15,7 @@ struct Home: View {
     var body: some View {
         
         ZStack {
-            
+
             VStack(spacing: 10){
                 
                 HStack(spacing: 15){
@@ -43,7 +43,7 @@ struct Home: View {
                     
                     Spacer(minLength: 0)
                 }
-                .padding([.horizontal,.top])
+//                .padding([.horizontal,.top])
 
                 Divider()
                 
@@ -56,6 +56,7 @@ struct Home: View {
                     .foregroundColor(.gray)
                     
                     TextField("Search", text: $HomeModel.search)
+                    //TextField(<#T##titleKey: LocalizedStringKey##LocalizedStringKey#>, text: <#T##Binding<String>#>)
                 }
                 //.padding(.leading,20)
                 .padding(.horizontal)
@@ -72,7 +73,7 @@ struct Home: View {
                             
                             //Item View....
                             
-                            //ZStack(alignment: Alignment(horizontal: .center, vertical: .center), content: {
+                            //ZStack{
                             ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
                                 
                                 ItemView(item: item)
@@ -111,6 +112,7 @@ struct Home: View {
                     //.padding()
                 })
             }
+    
             
             //Side Menu.....
             
@@ -127,15 +129,18 @@ struct Home: View {
                 
                 Spacer(minLength: 0)
             }
-            .background(Color.gray.opacity(HomeModel.showMenu ? 0.3 : 0).ignoresSafeArea())
-            //Tạo một hành động khi view này nhận dạng được một cử chỉ nhấn
-            //Closing when Taps on outside.
-            .onTapGesture {
+//            .background(
+//                Color.gray.opacity(HomeModel.showMenu ? 0.3 : 0).ignoresSafeArea()
+//                //Closing when Taps on outside.
+//                    .onTapGesture(perform: {
+//                        withAnimation(.easeIn){HomeModel.showMenu.toggle()}
+//                    })
+//            )
+            .onTapGesture(perform: {
                 withAnimation(.easeIn){HomeModel.showMenu.toggle()}
-            }
-            
+            })
         }
-        
+
         //Hành động này ko có tác dụng nếu nhận được giá trị nil
         .onAppear(perform: {
 
@@ -145,6 +150,7 @@ struct Home: View {
         
         .onChange(of: HomeModel.search, perform: { newValue in
             
+            //to avoid continue search request....
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 
                 if newValue == HomeModel.search && HomeModel.search != ""{
@@ -160,25 +166,6 @@ struct Home: View {
                 withAnimation(.linear){HomeModel.filtered = HomeModel.items}
             }
         })
-        
-//        .onChange(of: HomeModel.search) { newValue in
-//
-//            //to avoid continue search request....
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//
-//                if newValue == HomeModel.search && HomeModel.search != ""{
-//
-//                    //Search Data
-//                    HomeModel.filterData()
-//                }
-//
-//            }
-//
-//            if HomeModel.search == ""{
-//                //Reset all data....
-//                withAnimation(.linear){HomeModel.filtered = HomeModel.items}
-//            }
-//        }
     }
 }
 
