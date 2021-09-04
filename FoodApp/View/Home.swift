@@ -18,7 +18,7 @@ struct Home: View {
 
             VStack(spacing: 10){
                 
-                HStack(spacing: 15){
+                HStack(spacing: 10){
                     
                     Button(action: {
                         withAnimation(.easeIn){HomeModel.showMenu.toggle()}
@@ -26,6 +26,7 @@ struct Home: View {
                         Image(systemName: "line.3.horizontal")
                             .font(.title)
                             .foregroundColor(.pink)
+                            .padding(.horizontal,10)
                     }
 
                     Text(HomeModel.userLocation == nil ? "Locating...." : "Deliver to")
@@ -37,7 +38,8 @@ struct Home: View {
                     //?????????????
                     //Text(".\(CurrentLocation.$locationManager)")
                     Text(HomeModel.userAddress)
-                        .font(.caption)
+                        //.font(.caption)
+                        //.font(.custom("caption", size: 15))
                         .fontWeight(.heavy)
                         .foregroundColor(.purple)
                     
