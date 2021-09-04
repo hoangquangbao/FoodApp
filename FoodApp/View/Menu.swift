@@ -9,12 +9,12 @@ import SwiftUI
 
 struct Menu: View {
     
-    @ObservedObject var HomeData = HomeViewModel()
+    @ObservedObject var homeDataMenu = HomeViewModel()
     var body: some View {
         
         VStack {
             
-            Button(action: {}, label: {
+            NavigationLink(destination: CartView(homeDataCartView: homeDataMenu)) {
                 
                 HStack(spacing: 15){
                     
@@ -29,7 +29,7 @@ struct Menu: View {
                     Spacer(minLength: 0)
                 }
                 .padding()
-            })
+            }
             
             Spacer()
             

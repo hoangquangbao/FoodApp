@@ -74,30 +74,27 @@ struct Home: View {
                         ForEach(HomeModel.filtered){item in
                             
                             //Item View....
-                            
-                            //ZStack{
+
                             ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
                                 
                                 ItemView(item: item)
-                                    
+                                
                                 HStack{
-                                 
+                                    
                                     Text(" FREE DELIVERY ")
                                         //.font(.title3)
                                         //.fontWeight(.bold)
-                                        .padding(.vertical,5)
-                                        //.padding(.horizontal)
+                                        .padding(5)
                                         .foregroundColor(.white)
                                         .background(Color.pink)
                                     
                                     Spacer(minLength: 0)
                                     
                                     Button(action: {
+                                        
                                         HomeModel.addToCart(item: item)
-                                    }) {
-                                        Image(systemName: item.isAdded ? "checkmark" : "plus")
-                                            //.padding(10)
-                                            //.font(.title3)
+                                        
+                                    }) { Image(systemName: item.isAdded ? "checkmark" : "plus")
                                             .padding(10)
                                             .foregroundColor(.white)
                                             .background(item.isAdded ? Color.green : Color.pink)
@@ -105,15 +102,13 @@ struct Home: View {
                                      }
                                     .padding(.trailing,10)
                                 }
-                                
-                                //.padding(.trailing,10)
                                 .padding(.top,10)
                                 //.padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                             })
-                            .frame(width: UIScreen.main.bounds.width - 30)
+                            //.frame(width: UIScreen.main.bounds.width - 30)
                         }
                     }
-                    //.padding(.vertical)
+                    .padding(.horizontal, 5)
                     //.padding()
                 })
             }
@@ -123,7 +118,7 @@ struct Home: View {
             
             HStack {
 
-                Menu(HomeData: HomeModel)
+                Menu(homeDataMenu: HomeModel)
                 //Hiệu ứng di chuyển từ bên trái
                 //Move effect from left....
                 //Một đối tượng xác định các thuộc tính liên quan đến màn hình dựa trên phần cứng.
