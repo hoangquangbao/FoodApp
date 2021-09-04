@@ -60,7 +60,7 @@ struct Home: View {
                 }
                 //.padding(.leading,20)
                 .padding(.horizontal)
-                .padding(.top,10)
+                //.padding(.top,5)
                 
                 Divider()
                 
@@ -80,32 +80,35 @@ struct Home: View {
                                     
                                 HStack{
                                  
-                                    Text("FREE DELIVERY")
-                                        //.font(.title2)
-                                        .fontWeight(.bold)
-                                    
-                                        .foregroundColor(.red)
-                                        .background(Color("pink"))
-                                        //.padding(.vertical,10)
+                                    Text(" FREE DELIVERY ")
+                                        //.font(.title3)
+                                        //.fontWeight(.bold)
+                                        .padding(.vertical,5)
                                         //.padding(.horizontal)
-                                        
+                                        .foregroundColor(.white)
+                                        .background(Color.pink)
                                     
                                     Spacer(minLength: 0)
                                     
-                                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                                         Image(systemName: "plus")
+                                    Button(action: {
+                                        HomeModel.addToCart(item: item)
+                                    }) {
+                                        Image(systemName: item.isAdded ? "checkmark" : "plus")
                                             //.padding(10)
-                                            //.font(.title2)
+                                            //.font(.title3)
+                                            .padding(10)
                                             .foregroundColor(.white)
-                                            .background(Color("pink"))
+                                            .background(item.isAdded ? Color.green : Color.pink)
                                             .clipShape(Circle())
                                      }
+                                    .padding(.trailing,10)
                                 }
+                                
                                 //.padding(.trailing,10)
-                                //.padding(.top,10)
-                                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 20))
+                                .padding(.top,10)
+                                //.padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                             })
-                            .frame(width: UIScreen.main.bounds.width - 5)
+                            .frame(width: UIScreen.main.bounds.width - 30)
                         }
                     }
                     //.padding(.vertical)
@@ -125,7 +128,7 @@ struct Home: View {
                 //Trả về đối tượng màn hình đại diện cho màn hình của thiết bị.
                 //Hình chữ nhật giới hạn của màn hình, được đo bằng điểm.
                 //Trả về chiều rộng của hình chữ nhật.
-                    .offset(x: HomeModel.showMenu ? 0 : -UIScreen.main.bounds.width / 1.6)
+                    .offset(x: HomeModel.showMenu ? 0 : -UIScreen.main.bounds.width / 1.2)
                 
                 Spacer(minLength: 0)
             }

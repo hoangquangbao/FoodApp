@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Items: Identifiable{
+struct Item: Identifiable{
     
     var id: String
     var item_name: String
@@ -15,4 +15,7 @@ struct Items: Identifiable{
     var item_details: String
     var item_image: String
     var item_raitings: String
+    
+    // To identify whether it is added to cart....
+    var isAdded: Bool = false
 }

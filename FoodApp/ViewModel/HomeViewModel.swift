@@ -23,8 +23,11 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     @Published var showMenu = false
     
     //ItemData....
-    @Published var items : [Items] = []
-    @Published var filtered : [Items] = []
+    @Published var items : [Item] = []
+    @Published var filtered : [Item] = []
+    
+    //Cart Data....
+    @Published var cartItems : [Cart] = []
     
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -109,7 +112,7 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
             
             guard let itemData = snap else{return}
             
-            self.items = itemData.documents.compactMap({ doc -> Items? in
+            self.items = itemData.documents.compactMap({ doc -> Item? in
                 
                 let id = doc.documentID
                 let name = doc.get("item_name") as! String
@@ -118,7 +121,7 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
                 let image = doc.get("item_image") as! String
                 let raitings = doc.get("item_raitings") as! String
                 
-                return Items(id: id, item_name: name, item_cost: cost, item_details: details, item_image: image, item_raitings: raitings)
+                return Item(id: id, item_name: name, item_cost: cost, item_details: details, item_image: image, item_raitings: raitings)
             })
             
             self.filtered = self.items
@@ -126,6 +129,7 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     }
     
     //Search or Filter..
+    
     func filterData() {
         
         withAnimation(.linear){
@@ -137,4 +141,36 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         }
     }
     
+    //Add to Cart function
+    func addToCart(item: Item) {
+        
+        // cheking it is added....
+        self.items[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        // updating filtered array also for search bar results....
+        self.filtered[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        
+        if item.isAdded {
+            
+            // remove from list....
+            self.cartItems.remove(at: getIndex(item: item, isCartIndex: true))
+            return
+        }
+        // else adding....
+        self.cartItems.append(Cart(item: item, quantity: 1))
+    }
+    
+    func getIndex(item: Item, isCartIndex:Bool) -> Int {
+        
+        let index = self.items.firstIndex { item1 in
+            
+            return item.id == item1.id
+        } ?? 0
+        
+        let cartIndex = self.cartItems.firstIndex { item1 in
+            
+            return item.id == item1.item.id
+        } ?? 0
+        
+        return isCartIndex ? cartIndex : index
+    }
 }

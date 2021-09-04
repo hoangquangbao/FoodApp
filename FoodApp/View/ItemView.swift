@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct ItemView: View {
     
-    var item: Items
+    var item: Item
     var body: some View {
         
         VStack{
