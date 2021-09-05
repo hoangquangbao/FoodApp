@@ -42,7 +42,8 @@ struct CartView: View {
                     
                     ForEach(homeDataCartView.cartItems) {cart in
                     
-                        //Text(item.item.item_name)
+                        // Cart ItemView....
+                        
                         HStack(spacing: 15) {
                             
                             WebImage(url: URL(string: cart.item.item_image))
@@ -55,7 +56,10 @@ struct CartView: View {
                             VStack(alignment: .leading, spacing: 10) {
                                 
                                 Text(cart.item.item_name)
-                                    .fontWeight(.semibold)
+//                                    .fontWeight(.semibold)
+//                                    .foregroundColor(.black)
+                                    .font(.title3)
+                                    .fontWeight(.bold)
                                     .foregroundColor(.black)
                                 
                                 Text(cart.item.item_details)
@@ -108,6 +112,24 @@ struct CartView: View {
                             }
                         }
                         .padding()
+                        .contextMenu {
+                            
+                            // For deleting Order....
+                            Button(action: {
+                                
+                                // Deleting item from Cart....
+                                let index = homeDataCartView.getIndex(item: cart.item, isCartIndex: true)
+                                let itemIndex = homeDataCartView.getIndex(item: cart.item, isCartIndex: false)
+                                
+                                homeDataCartView.items[itemIndex].isAdded = false
+                                homeDataCartView.filtered[itemIndex].isAdded = false
+                                
+                                homeDataCartView.cartItems.remove(at: index)
+                            }) {
+                                
+                                Text("Remove")
+                            }
+                        }
                     }
                 }
             }
@@ -132,9 +154,9 @@ struct CartView: View {
                 }
                 .padding([.top, .horizontal])
                 
-                Button(action: {}) {
+                Button(action: {homeDataCartView.updateOrder()}) {
                     
-                    Text("Check out")
+                    Text(homeDataCartView.ordered ? "Cancel Order" : "Check out")
                         .font(.title2)
                         .fontWeight(.heavy)
                         .foregroundColor(.black)

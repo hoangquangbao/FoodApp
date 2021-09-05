@@ -66,51 +66,62 @@ struct Home: View {
                 
                 Divider()
                 
-                ScrollView(.vertical, showsIndicators: false, content: {
+                if HomeModel.items.isEmpty {
                     
-                    VStack(spacing: 25){
+                    Spacer()
+                    
+                    ProgressView()
+                    
+                    Spacer()
+                }
+                else {
+                    
+                    ScrollView(.vertical, showsIndicators: false, content: {
                         
-                        //ForEach(HomeModel.items){item in
-                        ForEach(HomeModel.filtered){item in
+                        VStack(spacing: 25){
                             
-                            //Item View....
+                            //ForEach(HomeModel.items){item in
+                            ForEach(HomeModel.filtered){item in
+                                
+                                //Item View....
 
-                            ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
-                                
-                                ItemView(item: item)
-                                
-                                HStack{
+                                ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
                                     
-                                    Text(" FREE DELIVERY ")
-                                        //.font(.title3)
-                                        //.fontWeight(.bold)
-                                        .padding(5)
-                                        .foregroundColor(.white)
-                                        .background(Color.pink)
+                                    ItemView(item: item)
                                     
-                                    Spacer(minLength: 0)
-                                    
-                                    Button(action: {
+                                    HStack{
                                         
-                                        HomeModel.addToCart(item: item)
-                                        
-                                    }) { Image(systemName: item.isAdded ? "checkmark" : "plus")
-                                            .padding(10)
+                                        Text(" FREE DELIVERY ")
+                                            //.font(.title3)
+                                            //.fontWeight(.bold)
+                                            .padding(5)
                                             .foregroundColor(.white)
-                                            .background(item.isAdded ? Color.green : Color.pink)
-                                            .clipShape(Circle())
-                                     }
-                                    .padding(.trailing,10)
-                                }
-                                .padding(.top,10)
-                                //.padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-                            })
-                            //.frame(width: UIScreen.main.bounds.width - 30)
+                                            .background(Color.pink)
+                                        
+                                        Spacer(minLength: 0)
+                                        
+                                        Button(action: {
+                                            
+                                            HomeModel.addToCart(item: item)
+                                            
+                                        }) { Image(systemName: item.isAdded ? "checkmark" : "plus")
+                                                .padding(10)
+                                                .foregroundColor(.white)
+                                                .background(item.isAdded ? Color.green : Color.pink)
+                                                .clipShape(Circle())
+                                         }
+                                        .padding(.trailing,10)
+                                    }
+                                    .padding(.top,10)
+                                    //.padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                                })
+                                //.frame(width: UIScreen.main.bounds.width - 30)
+                            }
                         }
-                    }
-                    .padding(.horizontal, 5)
-                    //.padding()
-                })
+                        .padding(.horizontal, 5)
+                        //.padding()
+                    })
+                }
             }
     
             

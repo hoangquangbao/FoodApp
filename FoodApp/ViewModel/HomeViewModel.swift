@@ -29,6 +29,8 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     //Cart Data....
     @Published var cartItems : [Cart] = []
     
+    @Published var ordered = false
+    
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         
@@ -147,7 +149,13 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         // cheking it is added....
         self.items[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
         // updating filtered array also for search bar results....
-        self.filtered[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        
+        let filterIndex = self.filtered.firstIndex { item1 in
+            
+            return item.id == item1.id
+        } ?? 0
+        
+        self.filtered[filterIndex].isAdded = !item.isAdded
         
         if item.isAdded {
             
@@ -162,12 +170,10 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     func getIndex(item: Item, isCartIndex:Bool) -> Int {
         
         let index = self.items.firstIndex { item1 in
-            
             return item.id == item1.id
         } ?? 0
         
         let cartIndex = self.cartItems.firstIndex { item1 in
-            
             return item.id == item1.item.id
         } ?? 0
         
@@ -179,7 +185,6 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         var price: Float = 0
         
         cartItems.forEach { (item) in
-            
             price += Float(item.quantity)*Float(truncating: item.item.item_cost)
         }
         
@@ -192,5 +197,50 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         format.numberStyle = .currency
         
         return format.string(from: NSNumber(value: value)) ?? ""
+    }
+    
+    // Write Oder Data into FireStore....
+    func updateOrder() {
+        
+        let db = Firestore.firestore()
+        
+        // Creating dict of food details....
+        if ordered {
+            ordered = false
+            db.collection("Users").document(Auth.auth().currentUser!.uid).delete { err in
+                
+                if err != nil {
+                    self.ordered = true
+                }
+            }
+            return
+        }
+        
+        var details : [[String : Any]] = []
+        
+        cartItems.forEach { cart in
+            details.append([
+            
+                "item_name" : cart.item.item_name,
+                "item_quantity" : cart.quantity,
+                "item_cost" : cart.item.item_cost
+            ])
+        }
+        
+        ordered = true
+        
+        db.collection("Users").document(Auth.auth().currentUser!.uid).setData([
+            
+            "oder_food" : details,
+            "total_cost" : calculateTotalPrice(),
+            "location" : GeoPoint(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        ]) { err in
+            
+            if err != nil {
+                self.ordered = false
+                return
+            }
+            print("Success")
+        }
     }
 }
