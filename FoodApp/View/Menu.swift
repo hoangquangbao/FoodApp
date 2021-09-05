@@ -20,11 +20,11 @@ struct Menu: View {
                     
                     Image(systemName: "cart")
                         .font(.title2)
-                        .foregroundColor(.pink)
-                    
-                    Text("Cart")
-                        .fontWeight(.bold)
                         .foregroundColor(.black)
+                    
+                    Text(" My cart")
+                        .fontWeight(.bold)
+                        .foregroundColor(.pink)
                     
                     Spacer(minLength: 0)
                 }
