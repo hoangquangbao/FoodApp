@@ -20,7 +20,10 @@ struct ItemView: View {
             WebImage(url: URL(string: item.item_image))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .cornerRadius(5)
+                .frame(height: 250)
+                .cornerRadius(15)
+            
+            
                 //.frame(width: UIScreen.main.bounds.width - 30, height: 250)
                 //.clipShape(Circle())
                 //.frame(height: 250)
