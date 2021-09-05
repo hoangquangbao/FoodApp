@@ -137,12 +137,12 @@ struct CartView: View {
                     Text("Check out")
                         .font(.title2)
                         .fontWeight(.heavy)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 30)
                         .background(
                             
-                            LinearGradient(gradient: .init(colors: [Color("lightblue"),Color.blue]), startPoint: .leading, endPoint: .trailing)
+                            LinearGradient(gradient: .init(colors: [Color("lightyellow"),Color.yellow]), startPoint: .leading, endPoint: .trailing)
                         )
                         .cornerRadius(15)
                 }
