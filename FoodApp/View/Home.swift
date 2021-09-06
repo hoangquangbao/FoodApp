@@ -40,8 +40,9 @@ struct Home: View {
                     Button(action: {
                        // The favorite foods
                     }) {
-                        Image(systemName: "heart")
+                        Image(systemName: "heart.fill")
                             .font(.title)
+                            //.background(Color.red)
                             .foregroundColor(.red)
                             //.padding(.horizontal,10)
                     }
