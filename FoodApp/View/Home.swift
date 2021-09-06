@@ -18,31 +18,66 @@ struct Home: View {
 
             VStack(spacing: 10){
                 
-                HStack(spacing: 10){
+                HStack {
                     
                     Button(action: {
                         withAnimation(.easeIn){HomeModel.showMenu.toggle()}
                     }) {
-                        Image(systemName: "line.3.horizontal")
+                        Image(systemName: "lineweight")
                             .font(.title)
-                            .foregroundColor(.pink)
-                            .padding(.horizontal,10)
+                            .foregroundColor(.red)
+                            //.padding(.horizontal,10)
                     }
+                    
+                    Spacer()
+                    
+                    Text("Boboli Food")
+                        .font(.custom("Pacifico-Regular", size: 30))
+                        .foregroundColor(.purple)
+                
+                    Spacer()
+                    
+                    Button(action: {
+                       // The favorite foods
+                    }) {
+                        Image(systemName: "heart")
+                            .font(.title)
+                            .foregroundColor(.red)
+                            //.padding(.horizontal,10)
+                    }
+                }
+                .padding(.horizontal)
+                
+                HStack {
+                    
+//                    Button(action: {
+//                        withAnimation(.easeIn){HomeModel.showMenu.toggle()}
+//                    }) {
+//                        Image(systemName: "lineweight")
+//                            .font(.title)
+//                            .foregroundColor(.red)
+//                            .padding(.horizontal,10)
+//                    }
 
-                    Text(HomeModel.userLocation == nil ? "Locating...." : "Deliver to")
-                        .foregroundColor(.black)
+                    Text(HomeModel.userLocation == nil ? "  Locating...." : "  Delivery to")
+                        .font(.custom("Pacifico-Regular", size: 15))
+                        .foregroundColor(.gray)
+                        //.font(.caption2)
+                        //.font(.custom("caption", size: 15))
+                        //.foregroundColor(.pink)
 //                    Text(HomeModel.userLocation == nil ? "Locating...." : HomeModel.noLocation ? "Unknown Customer Address" : "Deliver")
-//                    if HomeModel.noLocation {
-//
-//                        Text("Haven't address's customer").foregroundColor(.black)}
                     //?????????????
                     //Text(".\(CurrentLocation.$locationManager)")
                     Text(HomeModel.userAddress)
-                        //.font(.caption)
+                        .font(.custom("Pacifico-Regular", size: 15))
+                        .foregroundColor(.gray)
+                        //.fontWeight(.bold)
+                        //.font(.caption2)
                         //.font(.custom("caption", size: 15))
-                        .fontWeight(.heavy)
-                        .foregroundColor(.purple)
-                    
+                        
+                        //.fontWeight(.heavy)
+                        //.foregroundColor(.purple)
+                                        
                     Spacer(minLength: 0)
                 }
 //                .padding([.horizontal,.top])
@@ -96,7 +131,7 @@ struct Home: View {
                                             //.fontWeight(.bold)
                                             .padding(5)
                                             .foregroundColor(.white)
-                                            .background(Color.pink)
+                                            .background(Color.red)
                                         
                                         Spacer(minLength: 0)
                                         
@@ -123,7 +158,32 @@ struct Home: View {
                     })
                 }
             }
-    
+            
+            if HomeModel.noLocation {
+                
+                VStack(spacing: 5) {
+                    
+                    Text("Boboli Food")
+                        .padding(.horizontal)
+                        .font(.custom("Pacifico-Regular", size: 15))
+                        .foregroundColor(.purple)
+                    
+                    Text("Please Enable Location Access In Settings To Further Move On !!!")
+                        .padding(.horizontal)
+                        .foregroundColor(.black)
+//                        .frame(width: UIScreen.main.bounds.width - 100, height: 120)
+//                        .background(Color.black)
+//                        .cornerRadius(10)
+//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                        .background(Color.black.opacity(0.6).ignoresSafeArea())
+                }
+                .frame(width: UIScreen.main.bounds.width - 100, height: 120)
+                .background(Color.white)
+                .cornerRadius(10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.black.opacity(0.6).ignoresSafeArea())
+                
+            }
             
             //Side Menu.....
             
@@ -150,6 +210,17 @@ struct Home: View {
             .onTapGesture(perform: {
                 withAnimation(.easeIn){HomeModel.showMenu.toggle()}
             })
+            
+//            if HomeModel.noLocation {
+//
+//                Text("Please Enable Location Access In Settings To Further Move On !!!")
+//                    .foregroundColor(.black)
+//                    .frame(width: UIScreen.main.bounds.width - 100, height: 120)
+//                    .background(Color.white)
+//                    .cornerRadius(10)
+//                    //.frame(width: .infinity, height: .infinity)
+//                    .background(Color.black.opacity(0.3).ignoresSafeArea())
+//            }
         }
 
         //Hành động này ko có tác dụng nếu nhận được giá trị nil

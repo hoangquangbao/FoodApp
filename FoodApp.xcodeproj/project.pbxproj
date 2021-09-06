@@ -20,6 +20,10 @@
 		06A46DCD26D329F000167407 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A46DCC26D329F000167407 /* Home.swift */; };
 		06B9E6B626D8783800F406BF /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 06B9E6B526D8783800F406BF /* SDWebImageSwiftUI */; };
 		06B9E6B826D87B6200F406BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06B9E6B726D87B6200F406BF /* GoogleService-Info.plist */; };
+		06C4818526E5A86F008D569E /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C4818326E5A35C008D569E /* Pacifico-Regular.ttf */; };
+		06C4818626E5AD0C008D569E /* ShadowsIntoLight-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C4818426E5A365008D569E /* ShadowsIntoLight-Regular.ttf */; };
+		06C4818726E5AD0C008D569E /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C4818226E5A351008D569E /* Lobster-Regular.ttf */; };
+		06C4818826E5AD0C008D569E /* Allison-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C4818126E5A342008D569E /* Allison-Regular.ttf */; };
 		06D5354A26D4A20200CB5F0C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D5354926D4A20200CB5F0C /* Menu.swift */; };
 		06FF616626E310E9003D1DA0 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF616526E310E9003D1DA0 /* Cart.swift */; };
 		8B5C4B44B7024F1B51F1373C /* Pods_FoodApp_FoodAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6333965C1216A964844FF3 /* Pods_FoodApp_FoodAppUITests.framework */; };
@@ -64,6 +68,10 @@
 		06A46DCA26D329E200167407 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		06A46DCC26D329F000167407 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		06B9E6B726D87B6200F406BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		06C4818126E5A342008D569E /* Allison-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allison-Regular.ttf"; sourceTree = "<group>"; };
+		06C4818226E5A351008D569E /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
+		06C4818326E5A35C008D569E /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
+		06C4818426E5A365008D569E /* ShadowsIntoLight-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ShadowsIntoLight-Regular.ttf"; sourceTree = "<group>"; };
 		06D5354926D4A20200CB5F0C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		06FF616526E310E9003D1DA0 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		0B6333965C1216A964844FF3 /* Pods_FoodApp_FoodAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp_FoodAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +158,7 @@
 				068BDCD026D2A84A003DE847 /* Info.plist */,
 				06B9E6B726D87B6200F406BF /* GoogleService-Info.plist */,
 				068BDCCD26D2A84A003DE847 /* Preview Content */,
+				06C4818026E5A2D7008D569E /* Font */,
 			);
 			path = FoodApp;
 			sourceTree = "<group>";
@@ -195,6 +204,17 @@
 				06A46DCA26D329E200167407 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		06C4818026E5A2D7008D569E /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				06C4818426E5A365008D569E /* ShadowsIntoLight-Regular.ttf */,
+				06C4818226E5A351008D569E /* Lobster-Regular.ttf */,
+				06C4818326E5A35C008D569E /* Pacifico-Regular.ttf */,
+				06C4818126E5A342008D569E /* Allison-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		75C5DF21BC7E1CCBC944A8DC /* Pods */ = {
@@ -334,6 +354,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06C4818626E5AD0C008D569E /* ShadowsIntoLight-Regular.ttf in Resources */,
+				06C4818726E5AD0C008D569E /* Lobster-Regular.ttf in Resources */,
+				06C4818826E5AD0C008D569E /* Allison-Regular.ttf in Resources */,
+				06C4818526E5A86F008D569E /* Pacifico-Regular.ttf in Resources */,
 				068BDCCF26D2A84A003DE847 /* Preview Assets.xcassets in Resources */,
 				068BDCCC26D2A84A003DE847 /* Assets.xcassets in Resources */,
 				06B9E6B826D87B6200F406BF /* GoogleService-Info.plist in Resources */,

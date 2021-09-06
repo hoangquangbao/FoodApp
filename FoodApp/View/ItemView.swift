@@ -47,7 +47,7 @@ struct ItemView: View {
                 ForEach(1...5,id: \.self){index in
                     
                     Image(systemName: "star.fill")
-                        .foregroundColor(index <= Int(item.item_raitings) ?? 0 ? .pink : .gray)
+                        .foregroundColor(index <= Int(item.item_raitings) ?? 0 ? .red : .gray)
                 }
             }
             //

@@ -69,18 +69,18 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     }
     
     func extractLocation(){
-        
+
         CLGeocoder().reverseGeocodeLocation(self.userLocation) { (res, err) in
-            
+
             guard let safeData = res else{return}
-            
+
             var address = ""
-            
+
             //getting area and locatlity name....
             address += safeData.first?.name ?? ""
             address += ", "
             address += safeData.first?.locality ?? ""
-            
+
             self.userAddress = address
         }
     }
